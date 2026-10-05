@@ -1,0 +1,273 @@
+:root {
+  color: #29252a;
+  background: #f7f7f7;
+  font-family: Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --page-bg: #f7f7f7;
+  --surface: #ffffff;
+  --text: #29252a;
+  --muted: #716a70;
+  --border: #d9d2d7;
+  --accent: #e64b78;
+  --accent-hover: #cf3b68;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.login-page,
+.signup-page {
+  min-height: 100vh;
+  background: var(--page-bg);
+}
+
+.login-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.signup-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-box,
+.signup-box {
+  width: min(400px, 100%);
+  min-height: 600px;
+  padding: 40px;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgb(41 37 42 / 10%);
+}
+
+.login-box label,
+.signup-box label {
+  display: block;
+  margin: 20px 0 6px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.login-box input,
+.signup-box input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.login-box input:focus,
+.signup-box input:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgb(230 75 120 / 18%);
+}
+
+.login-box button,
+.signup-box button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--surface);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.login-box button:hover,
+.signup-box button:hover {
+  background: var(--accent-hover);
+}
+
+.login-box a,
+.signup-box a {
+  color: var(--accent-hover);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.login-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 24px;
+  font-size: 24px;
+}
+
+.login-logo {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.login-box form > p,
+.signup-box .login-text {
+  margin: 24px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.signup-box h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.signup-box > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.brand {
+  position: absolute;
+  z-index: 4;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.brand-logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.photo-slider {
+  position: absolute;
+  top: 130px;
+  right: 440px;
+  left: 24px;
+  height: 360px;
+  overflow: hidden;
+}
+
+.photo-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-slide {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  opacity: 0;
+  transition: left 700ms ease, width 700ms ease, transform 700ms ease, opacity 700ms ease;
+}
+
+.photo-slide.active {
+  left: 50%;
+  z-index: 3;
+  width: min(44%, 340px);
+  background: var(--surface);
+  opacity: 1;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
+.photo-slide.previous,
+.photo-slide.next {
+  z-index: 2;
+  width: 30%;
+  opacity: 0.78;
+  transform: translate(-50%, -50%) scale(0.82);
+}
+
+.photo-slide.previous {
+  left: 18%;
+}
+
+.photo-slide.next {
+  left: 82%;
+}
+
+.photo-slide.far {
+  left: 100%;
+  z-index: 1;
+  width: 24%;
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(0.72);
+}
+
+@media (max-width: 760px) {
+  .login-page {
+    align-items: flex-end;
+    justify-content: center;
+    padding: 290px 20px 24px;
+  }
+
+  .login-box,
+  .signup-box {
+    min-height: 0;
+    padding: 32px 24px;
+  }
+
+  .signup-page {
+    align-items: center;
+    padding: 24px 20px;
+  }
+
+  .brand {
+    top: 16px;
+    left: 20px;
+  }
+
+  .brand-title {
+    font-size: 34px;
+  }
+
+  .photo-slider {
+    top: 110px;
+    right: 20px;
+    left: 20px;
+    height: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-slide,
+  .login-box button,
+  .signup-box button {
+    transition: none;
+  }
+}
